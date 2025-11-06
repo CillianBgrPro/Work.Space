@@ -1,0 +1,431 @@
+body {
+    background-color: #28283F;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.sidebar {
+    width: 400px;
+    height: 965px;
+    background: #38385F;
+    border-radius: 0 20px 20px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1;
+}
+
+.sidebar.hidden {
+    transform: translateX(-300px);
+}
+
+.sidebar2 {
+    width: 100px;
+    height: 965px;
+    background: #685BFF;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+
+/* Container pour les boutons avec labels */
+.button-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Label sous les boutons */
+.button-label {
+    font-family: "Poppins", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.4);
+    transition: all 0.3s ease;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* Positionnement des containers */
+.button-container:nth-child(1) {
+    top: 250px;
+    left: 155px;
+}
+
+.button-container:nth-child(2) {
+    top: 250px;
+    left: 285px;
+}
+
+.button-container:nth-child(3) {
+    top: 350px;
+    left: 150px;
+}
+
+.button-container:nth-child(4) {
+    top: 350px;
+    left: 280px;
+}
+
+.button-container:nth-child(5) {
+    top: 450px;
+    left: 150px;
+}
+
+.button-container:nth-child(6) {
+    top: 450px;
+    left: 275px;
+}
+
+/* Effet hover sur le container */
+.button-container:hover .button-label {
+    color: rgba(255, 255, 255, 0.95);
+    transform: translateY(2px);
+}
+
+/* Bouton toggle */
+.toggle-btn {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    position: absolute;
+    top: 150px;
+    left: 30px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+.toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.toggle-icon {
+    width: 20px;
+    height: 2px;
+    background: white;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.toggle-icon::before,
+.toggle-icon::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.toggle-icon::before {
+    top: -6px;
+}
+
+.toggle-icon::after {
+    top: 6px;
+}
+
+.sidebar.hidden ~ .sidebar2 .toggle-icon {
+    background: transparent;
+}
+
+.sidebar.hidden ~ .sidebar2 .toggle-icon::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+.sidebar.hidden ~ .sidebar2 .toggle-icon::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+/* bouton deconnexion */
+
+.deconnexion {
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 10px;
+    position: absolute;
+    top: 900px;
+    left: 20px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.deconnexion:hover {
+    transform: scale(1.1);
+    background: #ffffff;
+    box-shadow: 0 0 15px rgba(104, 91, 255, 0.6);
+}
+
+.image_deconnexion {
+    width: 30px;
+    transition: transform 0.3s ease;
+}
+
+.deconnexion:hover .image_deconnexion {
+    transform: rotate(10deg);
+}
+
+/* bouton suivie */
+
+.suivie {
+    width: 50px;
+    height: 50px;
+    background: #313155;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.suivie:hover {
+    transform: scale(1.1);
+    background: #685BFF;
+    box-shadow: 0 0 15px rgba(104, 91, 255, 0.6);
+}
+
+.image_suivie {
+    width: 30px;
+    transition: transform 0.3s ease;
+}
+
+.suivie:hover .image_suivie {
+    transform: rotate(10deg);
+}
+
+
+/* bouton collaborateurs */
+
+.collaborateurs {
+    width: 50px;
+    height: 50px;
+    background: #313155;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.collaborateurs:hover {
+    transform: scale(1.1);
+    background: #685BFF;
+    box-shadow: 0 0 15px rgba(104, 91, 255, 0.6);
+}
+
+.image_collaborateurs {
+    width: 30px;
+    transition: transform 0.3s ease;
+}
+
+.collaborateurs:hover .image_collaborateurs {
+    transform: rotate(10deg);
+}
+
+
+/* bouton budget */
+
+.budget {
+    width: 50px;
+    height: 50px;
+    background: #313155;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.budget:hover {
+    transform: scale(1.1);
+    background: #685BFF;
+    box-shadow: 0 0 15px rgba(104, 91, 255, 0.6);
+}
+
+.image_budget {
+    width: 30px;
+    transition: transform 0.3s ease;
+}
+
+.budget:hover .image_budget {
+    transform: rotate(10deg);
+}
+
+/* bouton calendrier */
+
+.calendrier {
+    width: 50px;
+    height: 50px;
+    background: #313155;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.calendrier:hover {
+    transform: scale(1.1);
+    background: #685BFF;
+    box-shadow: 0 0 15px rgba(104, 91, 255, 0.6);
+}
+
+.image_calendrier {
+    width: 25px;
+    transition: transform 0.3s ease;
+}
+
+.calendrier:hover .image_calendrier {
+    transform: rotate(10deg);
+}
+
+/* bouton taches */
+
+.taches {
+    width: 50px;
+    height: 50px;
+    background: #313155;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.taches:hover {
+    transform: scale(1.1);
+    background: #685BFF;
+    box-shadow: 0 0 15px rgba(104, 91, 255, 0.6);
+}
+
+.image_taches {
+    width: 20px;
+    transition: transform 0.3s ease;
+}
+
+.taches:hover .image_taches {
+    transform: rotate(10deg);
+}
+
+
+/* bouton parametres */
+
+.parametres {
+    width: 50px;
+    height: 50px;
+    background: #313155;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.parametres:hover {
+    transform: scale(1.1);
+    background: #685BFF;
+    box-shadow: 0 0 15px rgba(104, 91, 255, 0.6);
+}
+
+.image_parametres {
+    width: 25px;
+    transition: transform 0.3s ease;
+}
+
+.parametres:hover .image_parametres {
+    transform: rotate(10deg);
+}
+
+/* bouton profil */
+
+.profil{
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 20px 20px 20px 20px;
+    position: absolute;
+    top: 50px;
+    left: 30px;
+}
+
+/* bouton nouveau projet */
+
+.new_project{
+    width: 180px;
+    height: 250px;
+    background-color: #756BEA;
+    position: absolute;
+    top: 600px;
+    left: 150px;
+    border-radius: 10px 10px 10px 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.new_project:hover {
+    transform: scale(1.05);
+}
+
+.image_new_project{
+    width: 175px;
+}
+
+/* logo */
+
+
+.logo{
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    color: white;
+    position: absolute;
+    top: 50px;
+    left: 150px;
+}
+
+.bouton_projet {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    width: 120px;
+    height: 50px;
+    position: absolute;
+    left: 30px;
+    background-color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    color: #685BFF;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.bouton_projet:hover {
+    transform: scale(1.05);
+}
