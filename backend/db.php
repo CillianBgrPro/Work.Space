@@ -1,25 +1,24 @@
 <?php
-function loadEnv($path) {
-    if (!file_exists($path)) return;
-    $lines = file($path, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-    foreach ($lines as $line) {
-        if (strpos(trim($line), '#') === 0) continue;
-        list($name, $value) = explode('=', $line, 2);
-        $_ENV[trim($name)] = trim($value);
-    }
+$envPath = __DIR__ . '/../.env';
+if (!file_exists($envPath)) {
+    die(json_encode(['success' => false, 'message' => 'Fichier .env manquant']));
 }
 
-loadEnv(__DIR__ . '/.env');
-
-$host = $_ENV['DB_HOST'];
-$port = $_ENV['DB_PORT'];
-$dbname = $_ENV['DB_NAME'];
-$user = $_ENV['DB_USER'];
-$pass = $_ENV['DB_PASSWORD'];
+$config = parse_ini_file($envPath);
 
 try {
-    $dsn = "pgsql:host=$host;port=$port;dbname=$dbname";
-    $pdo = new PDO($dsn, $user, $pass, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
+    $host = $config['DB_HOST'];
+    $dbname = $config['DB_NAME'];
+    $user = $config['DB_USER'];
+    $pass = $config['DB_PASSWORD'];
+
+    $dsn = "mysql:host=$host;dbname=$dbname;charset=utf8mb4";
+
+    $pdo = new PDO($dsn, $user, $pass, [
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
+    ]);
 } catch (PDOException $e) {
-    die(json_encode(['success' => false, 'message' => "Erreur de connexion : " . $e->getMessage()]));
+    header('Content-Type: application/json');
+    die(json_encode(['success' => false, 'message' => "Erreur MySQL : " . $e->getMessage()]));
 }
