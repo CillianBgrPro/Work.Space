@@ -34,7 +34,7 @@ async function handleLogin() {
 
         if (data.success) {
             alert('Connexion rÃ©ussie ! Bienvenue ' + data.user.name);
-            window.location.href = 'index.phtml';
+            window.location.href = 'index.php';
         } else {
             alert(data.message);
         }
@@ -84,7 +84,7 @@ async function handleSignup() {
 
         if (data.success) {
             alert('Inscription rÃ©ussie ! Bienvenue ' + data.user.name);
-            window.location.href = 'index.phtml';
+            window.location.href = 'index.php';
         } else {
             alert(data.message);
         }

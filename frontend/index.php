@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['user_name'])) {
+    header('Location: login.html');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -74,7 +82,11 @@
         <img class="image_deconnexion" src="pictures/deco.png" alt="image de deconnexion">
     </div>
 
-    <div class="profil"></div>
+<div class="profil">
+    <span style="color: white; font-size: 12px; margin-left: 50px;">
+        <?php echo $_SESSION['user_name']; ?>
+    </span>
+</div>
 
 </div>
 
